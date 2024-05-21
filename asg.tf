@@ -6,14 +6,14 @@ resource "aws_launch_configuration" "dev-launch-config" {
   # Keep below arguments
   instance_type = "t2.micro"
   image_id = "${lookup(var.AMI, var.AWS_REGION)}"
-  key_name = "${aws_key_pair.oregon-region-key-pair.id}"
+  key_name = "${aws_key_pair.ohio-region-key-pair.id}"
   associate_public_ip_address = true
 
 }
 
 // Sends your public key to the instance
-resource "aws_key_pair" "oregon-region-key-pair" {
-    key_name = "oregon-region-key-pair"
+resource "aws_key_pair" "ohio-region-key-pair" {
+    key_name = "ohio-region-key-pair"
     public_key = "${file(var.PUBLIC_KEY_PATH)}"
 }
 
